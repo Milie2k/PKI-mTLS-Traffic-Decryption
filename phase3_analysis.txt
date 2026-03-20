@@ -1,0 +1,7 @@
+Negotiated cipher suite: "tls.handshake.type == 2"
+Forward secrecy: (explain: ECDHE/DHE -> yes; RSA key-exchange -> no)
+Notes: used SSLKEYLOGFILE and Wireshark to decrypt TLS1.3 application data.
+
+Method: TLS session keys were collected by launching Chromium with SSLKEYLOGFILE set (export SSLKEYLOGFILE=~/exam_pki/sslkeys.log). 
+Capture: A packet capture containing the full TLS handshake was created with tcpdump (~/exam_pki/capture.pcap).
+Decryption: Wireshark was configured to use the SSL key log (Preferences → Protocols → TLS → (Pre)-Master-Secret log filename = /home/$(whoami)/exam_pki/sslkeys.log) and successfully decrypted the TLS application data, revealing the HTTP request/response.
